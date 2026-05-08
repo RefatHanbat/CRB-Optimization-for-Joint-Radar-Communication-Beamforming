@@ -243,12 +243,14 @@ def solve_design1_joint_radar_comm(H, angle_grid, Pd, Gamma_lin, Pt_watt, Noise_
     prob = cp.Problem(cp.Minimize(cp.sum(obj_terms)), constraints)
 
     try:
+        prob.solve(solver=cp.MOSEK, verbose=False)
+        
+    except Exception:
+        try:
+             prob.solve(solver=cp.CLARABEL, verbose=False)
 
-        prob.solve(solver = cp.MOSEK, verbose = False)
-
-    except:
-
-        prob.solve(solver = cp.CLARABEL, verbose = False)
+        except Exception:
+                    return None, "solver_failed"
 
     if prob.status not in ["optimal", "optimal_inaccurate"]:
 

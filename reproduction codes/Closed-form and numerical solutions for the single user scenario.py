@@ -279,6 +279,8 @@ plt.grid(True)
 
 plt.legend()
 
+plt.savefig("Figure02_a.png", dpi=600, bbox_inches='tight')
+
 plt.show()
 
 ##### Single user extended case 
@@ -294,8 +296,15 @@ plt.plot(Gamma_dB_list, eq36_mse_db, 'x',
          label='Closed-form Solution')
 
 plt.xlabel('SINR (dB)')
+
 plt.ylabel('MSE (dB)')
+
 plt.title('Extended Target - Single User Case')
+
 plt.grid(True)
+
 plt.legend()
+
+plt.savefig("Figure02_b.png", dpi=600, bbox_inches='tight')
+
 plt.show()
